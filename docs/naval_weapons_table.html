@@ -233,7 +233,7 @@
             display: flex;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
             gap: 20px;
-            padding: 20px;
+            padding: 20px 20px 0 20px;
             border-radius: 8px;
             margin-bottom: 20px;
         }
@@ -274,6 +274,9 @@
         #br-slider, #caliber-slider {
             margin: 30px 10px 10px 10px; /* Add margin for tooltips */
         }
+        .legend-link {
+            text-align: right;
+        }
       </style>
 </head>
 <body>
@@ -295,7 +298,7 @@
     <div class="filter-section" id="class-filter">
         </div>
   </div>
-
+  <div class="legend-link"><small><a href="#legend">[explain columns]</a></small></div>
 
  
   <table class="sortable">
@@ -820,5 +823,51 @@
     </tbody>
   </table>
   <small>Updated 2025-07-12 / v. 2.47.0.43</small>
+  <div id="legend">
+    <h3>Legend</h3>
+    <ul>
+        <li><dfn>Weapon</dfn>: Name of the weapon.</li>
+        <li><dfn>Bullet Name</dfn>: Name of the bullet/shell/round/projectile used by the weapon.</li>
+        <li><dfn>Type</dfn>: Specific kind of the weapon. The following are supported:
+            <ul>
+                <li><code>he_frag_tank</code>: HE</li>
+                <li><code>he_frag_i_tank</code>: HE (it's meant to have a somewhat higher chance of igniting fire, but the difference is immaterial)</li>
+                <li><code>he_frag_dist_fuse</code>: HE-TF (time fused)</li>
+                <li><code>he_frag_base_fuse_tank</code>: HE-BF (base fuse)</li>
+                <li><code>he_frag_radio_fuse</code>: HE-VT (proximity)</li>
+                <li><code>shrapnel_tank</code>: Shrapnel (it's HE that is meant to have a somewhat higher number of framents (opposite of <code>he_frag_i_tank</code>), but the difference is immaterial)</li>
+                <li><code>sap_tank</code>: SAP</li>
+                <li><code>common_tank</code>: SAP(C) (in-game called just "Common", these are standard SAP shells under a fancy name)</li>
+                <li><code>special_common_tank</code>: SAP(SC) ("Special Common" shells trade lower filler for more penetration)</li>
+                <li><code>sapcbc_tank</code>: SAPCBC</li>
+                <li><code>sapbc_tank</code>: SAPBC</li>
+                <li><code>sapbc_flat_nose_tank</code>: SAPBC (it's supposed to have a flat nose, but there is no real difference vs other SAPBC)</li>
+                <li><code>aphe_tank</code>: APHE</li>
+                <li><code>apc_tank</code>: APC</li>
+                <li><code>apc_solid_medium_caliber_tank</code>: APC</li>
+                <li><code>apcbc_tank</code>: APCBC</li>
+                <li><code>aphebc_tank</code>: APHEBC</li>
+                <li><code>apds_fs_long_tank</code>: APDSFS</li>
+              </ul>
+        </li>
+        <li><dfn>Ships</dfn>: A list of ships that use the weapon.</li>
+        <li><dfn>BR</dfn>: Battle Rating - each subsequent value corresponds to the subsequent ship on the list.</li>
+        <li><dfn>Class</dfn>: The class of ship - listed the same way BRs are.</li>
+        <li><dfn>Caliber (mm)</dfn>: Diameter of the projectile, in millimeters (mm).</li>
+        <li><dfn>Speed</dfn>: Muzzle Velocity of the projectile in meters per second (m/s).</li>
+        <li><dfn>Rate of Fire</dfn>: Number of projectiles fired per minute.</li>
+        <li><dfn>Max Delta Angle</dfn>: Horizontal spread in degrees (°).</li>
+        <li><dfn>Max Delta Angle Vertical</dfn>: Vertical spread in degrees (°) (increases the chance of straddling the target).</li>
+        <li><dfn>Mass</dfn>: Projectile Mass in kilograms (kg).</li>
+        <li><dfn>Explosive Mass</dfn>: Mass of the explosive filler within the shell in kilograms (kg) - note that this is <em>not</em> a TNT equivalent, it is a raw mass of whatever explosive is being used.</li>
+        <li><dfn>Filler %</dfn>: Percentage of the shell's mass that is explosive filler - this gives a hint whether the shell should be AP, SAP or HE (the final decision is up to Gaijin).</li>
+        <li><dfn>Fuse Delay (s)</dfn>: Delay time before the fuse activates (on {{Explode Threshold}} mm of armor), in seconds (s).</li>
+        <li><dfn>Fuse Delay (m)</dfn>: Distance travelled before the fuse activates (on {{Explode Threshold}} mm of armor), in meters (m).</li>
+        <li><dfn>Explode Threshold</dfn>: Fuse Sensitivity - the minimum amount of armor needed to trigger the fuze (I think it's in the RHA equivalent???).</li>
+        <li><dfn>Jacob de Marre Pen 0° 0m</dfn>: Armor penetration value calculated using the <a href="https://wiki.warthunder.com/jacob_de_marre">Jacob de Marre formula</a> at 0 degrees and 0 meters, with the <code>demarrePenetrationK</code> already applied. This formula provides a standardized method of determining penetration in War Thunder, regardless of source or varying definitions of penetration across different countries.</li>
+        <li><dfn>Cx</dfn>: Drag coefficient. The higher the Cx, the more speed the projectile loses over time, requiring more time and a steeper trajectory to reach the same range. The exact drag calculation used by War Thunder has never been public and cannot be datamined.</li>
+        <li><dfn>demarrePenetrationK</dfn>: Multiplier in the Jacob de Marre penetration formula. It is used by Gaijin to account for the weaknesses of different shell types (notably SAP). This value is set individually for each shell.</li>        
+      </ul>
+  </div>
 </body>
 </html>

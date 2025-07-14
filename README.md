@@ -44,7 +44,8 @@ Install **Python** and **Git** from the links in the [Prerequisites](#prerequisi
 
 You must use Git to "clone" the `wt-tools` repository - [kotiq/wt-tools](https://github.com/kotiq/wt-tools.git). This ensures all files are downloaded correctly, avoiding installation errors. For a detailed guide on cloning, see [GitHub's official documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-The [official installation guide](https://github.com/kotiq/wt-tools?tab=readme-ov-file#installation) can be a bit misleading, as it appears to direct you to build executables, which is a complex process that I personally never managed to complete successfully on my machine. Instead, all the scripts here need are the `.py` files and their dependencies, which can be installed in a trivial way. (You can later use those `.py` files yourself, without worrying about compilation to `.exe`)
+> [!NOTE]
+> The [official installation guide](https://github.com/kotiq/wt-tools?tab=readme-ov-file#installation) can be a bit misleading, as it appears to direct you to build executables, which is a complex process that I personally never managed to complete successfully on my machine. Instead, all the scripts here need are the `.py` files and their dependencies, which can be installed in a trivial way. (You can later use those `.py` files yourself, without worrying about compilation to `.exe`)
 
 <details>
 <summary>Installing wt-tools without issues:</summary>
@@ -97,20 +98,20 @@ With `wt-tools` installed, you can now unpack the necessary War Thunder game fil
 
 ### Naval Weapons Table Generator (`naval_weapons_table.py`)
 
-Script used to generate [War Thunder Naval Weapons Table](https://jareelskaj.github.io/wt-wiki-tools/naval_weapons_table). You can download your own copy of the [naval_weapons_table.html](https://github.com/JareelSkaj/wt-wiki-tools/blob/main/docs/naval_weapons_table.html) and update `<table><!-- (...) --></table>` block to get your own personal table. Alternatively you can generate output in JSON, CSV or (default) wikitext. The script has its own thread on the War Thunder forums: [Research into the naval guns - the naval weapons table](https://forum.warthunder.com/t/research-into-the-naval-guns-the-naval-weapons-table/251222).
+Script used to generate [War Thunder Naval Weapons Table](https://jareelskaj.github.io/wt-wiki-tools/naval_weapons_table). You can download your own copy of the [naval_weapons_table.html](https://github.com/JareelSkaj/wt-wiki-tools/blob/main/docs/naval_weapons_table.html) and update `<table><!-- (...) --></table>` block to get your own personal table. The script can generate output in HTML, JSON, CSV or (default) wikitext. It has its own thread on the War Thunder forums: [Research into the naval guns - the naval weapons table](https://forum.warthunder.com/t/research-into-the-naval-guns-the-naval-weapons-table/251222).
 
 1.  **Configure Paths**: Open `naval_weapons_table.py` with your text editor (e.g., Notepad++).
 
 2.  **Edit the "Paths to files and scripts" section** at the top. Replace the placeholder paths with the correct, full paths on your computer.
 
-    > [!TIP]
-    > A sample path to Steam installation of War Thunder would look like `C:\Program Files (x86)\Steam\steamapps\common\WarThunder`. You can find it by right-clicking the game in your Steam library, choosing Properties -> Installed Files and then Browse next to "Size of installation: XX.XX GB on ...".
+> [!TIP]
+> A sample path to Steam installation of War Thunder would look like `C:\Program Files (x86)\Steam\steamapps\common\WarThunder`. You can find it by right-clicking the game in your Steam library, choosing Properties -> Installed Files and then Browse next to "Size of installation: XX.XX GB on ...".
 
 3.  **Save** the naval_weapons_table.py
 
 4.  **Run from the Terminal**: After navigating to the directory containing `naval_weapons_table.py`, run the script with your desired arguments.
 
-    **Example Command:**
+    **Sample Command:**
 
     ```bash
     python naval_weapons_table.py --weaponspath "C:\Users\YourWindowsLogin\AppData\Local\WarThunder\aces.vromfs.bin_u\gamedata\weapons\navalmodels_weapons" --unitspath "C:\Users\YourWindowsLogin\AppData\Local\WarThunder\aces.vromfs.bin_u\gamedata\units\ships" --outputformat html --from 75 --to 138.6

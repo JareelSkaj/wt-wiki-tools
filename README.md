@@ -48,7 +48,7 @@ You must use Git to "clone" the `wt-tools` repository - [kotiq/wt-tools](https:/
 > The [official installation guide](https://github.com/kotiq/wt-tools?tab=readme-ov-file#installation) can be a bit misleading, as it appears to direct you to build executables, which is a complex process that I personally never managed to complete successfully on my machine. Instead, all the scripts here need are the `.py` files and their dependencies, which can be installed in a trivial way. (You can later use those `.py` files yourself, without worrying about compilation to `.exe`)
 
 <details>
-<summary>Installing wt-tools without issues:</summary>
+<summary>ℹ️ Installing wt-tools without issues: ℹ️</summary>
 
 1.  Open your terminal (on Windows, open the Start Menu and type `PowerShell` or `cmd`).
 

@@ -45,7 +45,7 @@ Install **Python** and **Git** from the links in the [Prerequisites](#prerequisi
 You must use Git to "clone" the `wt-tools` repository - [kotiq/wt-tools](https://github.com/kotiq/wt-tools.git). This ensures all files are downloaded correctly, avoiding installation errors. For a detailed guide on cloning, see [GitHub's official documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 > [!NOTE]
-> The [official installation guide](https://github.com/kotiq/wt-tools?tab=readme-ov-file#installation) can be a bit misleading, as it appears to direct you to build executables, which is a complex process that I personally never managed to complete successfully on my machine. Instead, all the scripts here need are the `.py` files and their dependencies, which can be installed in a trivial way. (You can later use those `.py` files yourself, without worrying about compilation to `.exe`)
+> The [official installation guide](https://github.com/kotiq/wt-tools?tab=readme-ov-file#installation) can be a bit misleading, as it appears to direct you towards building the executables, which is a complex process that I personally never have managed to complete successfully on my machine. Instead, all the python scripts within this repository only need the `.py` files and their dependencies, which can be installed in a trivial way. (You can later use those `.py` files yourself, without worrying about compilation to `.exe`)
 
 <details>
 <summary>ℹ️ Installing wt-tools without issues: ℹ️</summary>
@@ -75,7 +75,7 @@ You must use Git to "clone" the `wt-tools` repository - [kotiq/wt-tools](https:/
 5.  Now, install the tool as a Python package using `pip`:
 
     ```bash
-    pip install .
+    pip install -r requirements.txt
     ```
 
     This command reads the setup files and correctly installs `wt-tools` and its dependencies.
@@ -157,3 +157,22 @@ If you encounter an error, check this list for a solution.
 
       * **Cause**: A typo was made while editing the `.py` script, like accidentally deleting a quote (`"`), comma (`,`), changing indentation or removing line breaks.
       * **Solution**: Open `naval_weapons_table.py` and compare the lines you edited to the examples in this guide to find and fix the mistake.
+
+  * **Error:** `ModuleNotFoundError: No module named 'blk'`
+
+      * **Cause**: Somehow you ended up missing the blk module from the python dependencies.
+      * **Solution**: Run `pip install git+https://github.com/kotiq/blk@8c92e35` in the console. If that won't work, try `pip install git+https://github.com/JareelSkaj/kotiq_blk` instead.
+
+  * **Error:** `ModuleNotFoundError: No module named 'click'` (or any other)
+
+      * **Cause**: Same as above, somehow you ended up missing a dependency. This shouldn't have happened if you did `pip install -r requirements.txt`.
+      * **Solution**: Run `pip install click` (or replace click with whatever module you were missing).
+
+* **Error:**
+    ```text
+    File "<string>", line 94, in <module>
+    ModuleNotFoundError: No module named 'distutils.msvccompiler'
+    [end of output]
+    ```
+    * **Cause:** Python uses distutils.msvccompiler to build and install some of the C modules. In the post-August 2022 versions (post-v.65) of the setup tool used by Python the way this was handled got somewhat modified, so the version of the *kotiq/blk@8c92e35* that we are using, made in October 2021, might have lost some compatibility. I don't know the details, this is out of my depth, but I know that this error happened to me when trying to install `wt-tools` on pyenv with python 3.8, but not with a locally installed Python 3.7.17.
+    * **Solution:** You could try installing [an older version](https://stackoverflow.com/questions/79063140/modulenotfounderror-no-module-named-distutils-msvccompiler-when-trying-to-ins) of the setup tools (older than v.65) but realistically: Just run the script you would like, and see what missing module errors is it throwing, when address the errors for these particular modules through `pip install`. It's far from a perfect solution, but resolved everything I needed. (This kind of BS is why I'm working on [PHP version of the Python wt-tools](https://github.com/JareelSkaj/wt-tools-php).)
